@@ -1,5 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
+import Banner from "../components/banner/banner";
+import { Card } from "../components/card/card";
+import NavBar from "../components/nav/navbar";
+
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -12,7 +16,13 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>Netflix</h1>
+        <NavBar username="yazdun@email.com" />
+        <Banner
+          title="Clifford the red dog"
+          subTitle="a very cute dog"
+          imgUrl="/static/clifford.webp"
+        />
+        <Card />
       </main>
     </div>
   );
