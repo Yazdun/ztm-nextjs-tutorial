@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import Banner from "../components/banner/banner";
-import { Card } from "../components/card/card";
 import NavBar from "../components/nav/navbar";
+import Card from "../components/card/card";
 
 import styles from "../styles/Home.module.css";
 
