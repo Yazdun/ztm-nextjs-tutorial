@@ -7,7 +7,7 @@ import { getVideos } from "../lib/videos";
 import styles from "../styles/Home.module.css";
 
 export async function getServerSideProps() {
-  const disneyVideos = getVideos();
+  const disneyVideos = await getVideos();
   return { props: { disneyVideos } };
 }
 
