@@ -3,21 +3,24 @@ import Banner from "../components/banner/banner";
 import NavBar from "../components/nav/navbar";
 import SectionCards from "../components/card/section-cards";
 import { getPopularVideos, getVideos } from "../lib/videos";
+import { magic } from "../lib/magic-client";
+import data from "../data/videos.json";
 
 import styles from "../styles/Home.module.css";
 
 export async function getServerSideProps() {
   const disneyVideos = await getVideos("disney trailer");
-  const productivityVideos = await getVideos("productivity");
-  const travelVideos = await getVideos("travel");
-  const popularVideos = await getPopularVideos();
+  // const productivityVideos = await getVideos("productivity");
+  // const travelVideos = await getVideos("travel");
+  // const popularVideos = await getPopularVideos();
 
   return {
-    props: { disneyVideos, travelVideos, productivityVideos, popularVideos },
+    props: { disneyVideos },
   };
 }
 
 export default function Home(props) {
+  console.log(magic);
   const { disneyVideos, travelVideos, productivityVideos, popularVideos } =
     props;
   return (
@@ -36,13 +39,13 @@ export default function Home(props) {
           imgUrl="/static/clifford.webp"
         />
         <SectionCards title="Disney" videos={disneyVideos} />
-        <SectionCards title="Travel" videos={travelVideos} size="small" />
+        {/* <SectionCards title="Travel" videos={travelVideos} size="small" />
         <SectionCards
           title="Productivity"
           videos={productivityVideos}
           size="medium"
-        />
-        <SectionCards title="Popular" videos={popularVideos} size="small" />
+        /> */}
+        {/* <SectionCards title="Popular" videos={popularVideos} size="small" /> */}
       </main>
     </div>
   );
