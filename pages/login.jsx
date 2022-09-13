@@ -17,12 +17,15 @@ export default function Login() {
     if (email) {
       if (email === "yazduntube@gmail.com") {
         // route to dashboard
-        // router.push("/");
         // log in a user by their email
         try {
           const didToken = await magic.auth.loginWithMagicLink({
             email,
           });
+          console.log(didToken);
+          if (didToken) {
+            router.push("/");
+          }
         } catch {
           // Handle errors if required!
         }
