@@ -1,13 +1,30 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/Login.module.css";
 
 export default function Login() {
+  const [email, setEmail] = useState();
+  const [userMsg, setUserMsg] = useState();
+
   const handleLoginWithEmail = () => {
     console.log("hello");
   };
+
+  const handleOnChangeEmail = (e) => {
+    const email = e.target.value;
+    setEmail(email);
+    setUserMsg();
+
+    if (email) {
+      // route to dashboard
+    } else {
+      // show user message
+      setUserMsg("Enter a valid message");
+    }
+  };
+
   return (
     <>
       <Head>
@@ -36,8 +53,12 @@ export default function Login() {
         <main className={styles.main}>
           <div className={styles.mainWrapper}>
             <h1 className={styles.signInHeader}>Sign In</h1>
-            <input type="text" className={styles.emailInput} />
-            <p className={styles.userMsg}></p>
+            <input
+              type="text"
+              className={styles.emailInput}
+              onChange={handleOnChangeEmail}
+            />
+            {userMsg && <p className={styles.userMsg}>{userMsg}</p>}
             <button onClick={handleLoginWithEmail} className={styles.loginBtn}>
               Sign In
             </button>
