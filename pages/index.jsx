@@ -2,17 +2,24 @@ import Head from "next/head";
 import Banner from "../components/banner/banner";
 import NavBar from "../components/nav/navbar";
 import SectionCards from "../components/card/section-cards";
-import { getVideos } from "../lib/videos";
+import { getPopularVideos, getVideos } from "../lib/videos";
 
 import styles from "../styles/Home.module.css";
 
 export async function getServerSideProps() {
-  const disneyVideos = await getVideos();
-  return { props: { disneyVideos } };
+  const disneyVideos = await getVideos("disney trailer");
+  const productivityVideos = await getVideos("productivity");
+  const travelVideos = await getVideos("travel");
+  const popularVideos = await getPopularVideos();
+
+  return {
+    props: { disneyVideos, travelVideos, productivityVideos, popularVideos },
+  };
 }
 
 export default function Home(props) {
-  const { disneyVideos } = props;
+  const { disneyVideos, travelVideos, productivityVideos, popularVideos } =
+    props;
   return (
     <div className={styles.container}>
       <Head>
@@ -21,7 +28,7 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className={styles.main}>
         <NavBar username="yazdun@email.com" />
         <Banner
           title="Clifford the red dog"
@@ -29,6 +36,13 @@ export default function Home(props) {
           imgUrl="/static/clifford.webp"
         />
         <SectionCards title="Disney" videos={disneyVideos} />
+        <SectionCards title="Travel" videos={travelVideos} size="small" />
+        <SectionCards
+          title="Productivity"
+          videos={productivityVideos}
+          size="medium"
+        />
+        <SectionCards title="Popular" videos={popularVideos} size="small" />
       </main>
     </div>
   );
