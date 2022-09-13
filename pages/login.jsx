@@ -4,19 +4,28 @@ import Link from "next/link";
 import React, { useState } from "react";
 import styles from "../styles/Login.module.css";
 import Router, { useRouter } from "next/router";
+import { magic } from "../lib/magic-client";
 
 export default function Login() {
   const [email, setEmail] = useState();
   const [userMsg, setUserMsg] = useState();
   const router = useRouter();
 
-  const handleLoginWithEmail = (e) => {
+  const handleLoginWithEmail = async (e) => {
     e.preventDefault();
 
     if (email) {
-      if (email === "yazdun@email.com") {
+      if (email === "yazduntube@gmail.com") {
         // route to dashboard
-        router.push("/");
+        // router.push("/");
+        // log in a user by their email
+        try {
+          const didToken = await magic.auth.loginWithMagicLink({
+            email,
+          });
+        } catch {
+          // Handle errors if required!
+        }
       } else {
         // show user message
         setUserMsg("Something went wrong");

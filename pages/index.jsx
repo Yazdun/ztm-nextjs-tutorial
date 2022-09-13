@@ -3,9 +3,6 @@ import Banner from "../components/banner/banner";
 import NavBar from "../components/nav/navbar";
 import SectionCards from "../components/card/section-cards";
 import { getPopularVideos, getVideos } from "../lib/videos";
-import { magic } from "../lib/magic-client";
-import data from "../data/videos.json";
-
 import styles from "../styles/Home.module.css";
 
 export async function getServerSideProps() {
@@ -20,7 +17,6 @@ export async function getServerSideProps() {
 }
 
 export default function Home(props) {
-  console.log(magic);
   const { disneyVideos, travelVideos, productivityVideos, popularVideos } =
     props;
   return (
