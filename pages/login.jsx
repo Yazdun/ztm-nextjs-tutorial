@@ -3,13 +3,25 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from "../styles/Login.module.css";
+import Router, { useRouter } from "next/router";
 
 export default function Login() {
   const [email, setEmail] = useState();
   const [userMsg, setUserMsg] = useState();
+  const router = useRouter();
 
-  const handleLoginWithEmail = () => {
-    console.log("hello");
+  const handleLoginWithEmail = (e) => {
+    e.preventDefault();
+
+    if (email) {
+      if (email === "yazdun@email.com") {
+        // route to dashboard
+        router.push("/");
+      } else {
+        // show user message
+        setUserMsg("Something went wrong");
+      }
+    }
   };
 
   const handleOnChangeEmail = (e) => {
