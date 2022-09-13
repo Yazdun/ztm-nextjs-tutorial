@@ -9,6 +9,7 @@ import { magic } from "../lib/magic-client";
 export default function Login() {
   const [email, setEmail] = useState();
   const [userMsg, setUserMsg] = useState();
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleLoginWithEmail = async (e) => {
@@ -19,19 +20,25 @@ export default function Login() {
         // route to dashboard
         // log in a user by their email
         try {
+          setLoading(true);
+
           const didToken = await magic.auth.loginWithMagicLink({
             email,
           });
           console.log(didToken);
           if (didToken) {
             router.push("/");
+            setLoading(false);
           }
-        } catch {
+        } catch (err) {
           // Handle errors if required!
+          setLoading(false);
+          console.log(err);
         }
       } else {
         // show user message
         setUserMsg("Something went wrong");
+        setLoading(false);
       }
     }
   };
@@ -46,6 +53,7 @@ export default function Login() {
     } else {
       // show user message
       setUserMsg("Enter a valid message");
+      setLoading(false);
     }
   };
 
@@ -84,7 +92,7 @@ export default function Login() {
             />
             {userMsg && <p className={styles.userMsg}>{userMsg}</p>}
             <button onClick={handleLoginWithEmail} className={styles.loginBtn}>
-              Sign In
+              {loading ? "Loading" : "Sign In"}
             </button>
           </div>
         </main>
