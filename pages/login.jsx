@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Login.module.css";
 import Router, { useRouter } from "next/router";
 import { magic } from "../lib/magic-client";
@@ -11,6 +11,18 @@ export default function Login() {
   const [userMsg, setUserMsg] = useState();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const handleComplete = () => {
+      setLoading(false);
+    };
+
+    router.events.on("routeChangeComplete", handleComplete);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleComplete);
+    };
+  }, []);
 
   const handleLoginWithEmail = async (e) => {
     e.preventDefault();
@@ -28,7 +40,6 @@ export default function Login() {
           console.log(didToken);
           if (didToken) {
             router.push("/");
-            setLoading(false);
           }
         } catch (err) {
           // Handle errors if required!
