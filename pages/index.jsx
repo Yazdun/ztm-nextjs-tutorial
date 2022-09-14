@@ -19,6 +19,7 @@ export async function getServerSideProps() {
 export default function Home(props) {
   const { disneyVideos, travelVideos, productivityVideos, popularVideos } =
     props;
+
   return (
     <div className={styles.container}>
       <Head>

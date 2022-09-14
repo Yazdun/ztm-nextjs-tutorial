@@ -29,8 +29,6 @@ export default function Login() {
 
     if (email) {
       if (email === "yazduntube@gmail.com") {
-        // route to dashboard
-        // log in a user by their email
         try {
           setLoading(true);
 
