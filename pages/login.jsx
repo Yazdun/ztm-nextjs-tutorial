@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Login.module.css";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { magic } from "../lib/magic-client";
 
 export default function Login() {
