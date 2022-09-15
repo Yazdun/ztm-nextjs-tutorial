@@ -6,27 +6,25 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleComplete = () => {
       setIsLoading(false);
     };
-
     router.events.on("routeChangeComplete", handleComplete);
-
     return () => {
       router.events.off("routeChangeComplete", handleComplete);
     };
   }, [router]);
 
   const fn = async () => {
-    const isLoggedIn = await magic.user.isLoggedIn();
-    if (isLoggedIn) {
-      router.push("/");
-    } else {
-      router.push("/login");
-    }
+    // const isLoggedIn = await magic.user.isLoggedIn();
+    // if (isLoggedIn) {
+    //   router.push("/");
+    // } else {
+    //   router.push("/login");
+    // }
   };
 
   useEffect(() => {

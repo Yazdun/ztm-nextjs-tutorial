@@ -5,6 +5,7 @@ import cls from "classnames";
 import { motion } from "framer-motion";
 
 import styles from "./card.module.css";
+import Link from "next/link";
 
 const Card = (props) => {
   const {
