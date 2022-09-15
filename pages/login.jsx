@@ -22,7 +22,7 @@ export default function Login() {
     return () => {
       router.events.off("routeChangeComplete", handleComplete);
     };
-  }, []);
+  }, [router]);
 
   const handleLoginWithEmail = async (e) => {
     e.preventDefault();
