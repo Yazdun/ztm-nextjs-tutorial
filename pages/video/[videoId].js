@@ -11,7 +11,8 @@ export default function Video() {
   const video = {
     title: "Hi cute dog",
     publishTime: "1990-01-01",
-    description: "a big red dog that is super cute,can he get any bigger?",
+    description:
+      "a big red dog that is super cute,can he get any bigger?a big red dog that is super cute,can he get any bigger?a big red dog that is super cute,can he get any bigger?a big red dog that is super cute,can he get any bigger?a big red dog that is super cute,can he get any bigger?a big red dog that is super cute,can he get any bigger?a big red dog that is super cute,can he get any bigger?a big red dog that is super cute,can he get any bigger?a big red dog that is super cute,can he get any bigger?a big red dog that is super cute,can he get any bigger?a big red dog that is super cute,can he get any bigger?",
     channelTitle: "Pata Pic",
     viewcount: 10000,
   };
