@@ -31,7 +31,7 @@ export default function Home(props) {
       <main className={styles.main}>
         <NavBar username="yazdun@email.com" />
         <Banner
-          videoId={disneyVideos[0].id}
+          videoId={1}
           title="Clifford the red dog"
           subTitle="a very cute dog"
           imgUrl="/static/clifford.webp"
