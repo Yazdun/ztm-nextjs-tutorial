@@ -37,13 +37,6 @@ export default function Home(props) {
           imgUrl="/static/clifford.webp"
         />
         <SectionCards title="Disney" videos={disneyVideos} />
-        {/* <SectionCards title="Travel" videos={travelVideos} size="small" />
-        <SectionCards
-          title="Productivity"
-          videos={productivityVideos}
-          size="medium"
-        /> */}
-        {/* <SectionCards title="Popular" videos={popularVideos} size="small" /> */}
       </main>
     </div>
   );
