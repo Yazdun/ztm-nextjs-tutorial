@@ -4,6 +4,7 @@ import NavBar from "../components/nav/navbar";
 import SectionCards from "../components/card/section-cards";
 import { getPopularVideos, getVideos } from "../lib/videos";
 import styles from "../styles/Home.module.css";
+import { startFetchMyQuery } from "../lib/db/hasura";
 
 export async function getServerSideProps() {
   const disneyVideos = await getVideos("disney trailer");
@@ -19,6 +20,8 @@ export async function getServerSideProps() {
 export default function Home(props) {
   const { disneyVideos, travelVideos, productivityVideos, popularVideos } =
     props;
+
+  startFetchMyQuery();
 
   return (
     <div className={styles.container}>
